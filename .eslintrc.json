@@ -14,7 +14,12 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
-    "prettier/prettier": ["error"],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
     "react/jsx-no-undef": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-wrap-multilines": "off",
