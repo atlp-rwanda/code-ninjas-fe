@@ -3,10 +3,8 @@
 Barefoot Nomad. The company that takes care of your whole journey experience whether you are travelling for business purpose, leasure or any other reason. We've got you covered.
 ## Badges
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/<BADGE TOKEN>)](https://codeclimate.com/github/atlp-rwanda/code-ninjas-fe/maintainability)
-[![Build Status](https://travis-ci.org/<COVERAGE-BADGE>)](https://travis-ci.org/<TRAVIS-CI-LINK>)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/<BADGE TOKEN>)](https://codeclimate.com/github/atlp-rwanda/code-ninjas-fe/test_coverage)
-[![CircleCI](https://circleci.com/gh/atlp-rwanda/code-ninjas-fe/tree/<BADGE TOKEN>)](https://circleci.com/gh/atlp-rwanda/code-ninjas-fe/tree/dev)
+![CI](https://github.com/atlp-rwanda/c4-barefoot-frontend/workflows/CI/badge.svg?)
+[![Coverage Status](https://coveralls.io/repos/github/atlp-rwanda/code-ninjas-fe/badge.svg?branch=develop)](https://coveralls.io/github/atlp-rwanda/code-ninjas-fe?branch=develop)
 ## Description
 
 In the business world, travelling in different location is so common, but handling business deals, dealing with clients and responding to customer needs is what takes up the whole day and it gets hard to find a time to organise the whole travelling experience. Not only in business but also in leisure, travelling is a necessity. Many companies sometimes needs to send their employees to different locations to do some work. This is a common problem in the industry. The solution is to have a platform where you can manage your business travel experience, accomodation, room booking and any other activities in a more convenient way.
