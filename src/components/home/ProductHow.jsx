@@ -3,7 +3,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-import Button from './Button';
 import Typography from './Typography';
 import Curvy from '../../../static/productCurvyLines.png';
 import HowOne from '../../../static/productHowItWorks1.svg';

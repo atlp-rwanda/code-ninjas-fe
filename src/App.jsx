@@ -1,15 +1,16 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/index';
-import Welcome from './components/Welcome';
-import AboutPage from './components/about/About';
+import Registration from './pages/registration';
+import Unverified from './pages/unverified';
+import './styles/app.scss';
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="welcome" element={<Welcome />} />
-      <Route path="about" element={<AboutPage />} />
+      <Route path="unverified" element={<Unverified />} />
+      <Route path="registration" element={<Registration />} />
     </Routes>
   );
 }

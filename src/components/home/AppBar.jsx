@@ -46,7 +46,7 @@ function AppAppBar() {
             <Link
               variant="h6"
               underline="none"
-              href="/"
+              href="/registration"
               sx={{ ...rightLink, color: 'common.white' }}
             >
               <Button
