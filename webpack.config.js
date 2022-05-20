@@ -10,7 +10,7 @@ module.exports = {
     filename: 'index_bundle.js',
     publicPath: '/',
   },
-  resolve: { extensions: ['*', '.js', '.jsx', 'PNG'] },
+  resolve: { extensions: ['*', '.js', '.jsx', 'PNG', 'jpeg'] },
   module: {
     rules: [
       {
@@ -28,7 +28,7 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.(png|svg|jpg|gif|jpeg)$/,
         use: ['file-loader'],
       },
     ],
