@@ -46,7 +46,7 @@ describe('Landing Page component', () => {
               >
                 <a
                   className="MuiTypography-root MuiTypography-h6 MuiLink-root MuiLink-underlineNone css-1d3f0pp-MuiTypography-root-MuiLink-root"
-                  href="/"
+                  href="/login"
                   onBlur={[Function]}
                   onFocus={[Function]}
                 >

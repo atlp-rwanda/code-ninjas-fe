@@ -1,10 +1,12 @@
+import jwtDecode from 'jwt-decode';
 import Paper from '@mui/material/Paper';
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import * as yup from 'yup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 import { withFormik } from 'formik';
-
+import { useDispatch } from 'react-redux';
 import {
   withStyles,
   Card,
@@ -14,15 +16,14 @@ import {
   Typography,
   Button,
 } from '@material-ui/core';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import { logginUser } from '../../redux/features/auth/loginSlice';
+import { loginMode } from '../../redux/features/auth/isLoggedSlice';
+
 import google from '../../asset/icons8-google.svg';
 import facebook from '../../asset/icons8-facebook.svg';
-import validationsForm from '../../validation/registrationValidation';
 
 import '../../styles/registration.scss';
 import colors from '../../styles/colorVariables';
-
 import api from '../../utility/api';
 
 const styles = () => ({
@@ -38,30 +39,74 @@ const styles = () => ({
     justifyContent: 'center',
   },
 });
-const showPassword = () => {
-  const x = document.getElementById('password');
-  if (x.type === 'password') {
-    x.type = 'text';
-  } else {
-    x.type = 'password';
-  }
-};
 
 const form = (props) => {
-  const {
-    classes,
-    values,
-    touched,
-    errors,
-    isSubmitting,
-    handleChange,
-    handleBlur,
-    handleSubmit,
-  } = props;
+  const dispatch = useDispatch();
+  const [email, setemail] = useState();
+
+  const getEmail = (e) => {
+    setemail(e.target.value);
+  };
+  const [password, setpassword] = useState();
+  const getPassword = (e) => {
+    setpassword(e.target.value);
+  };
+  const showPassword = () => {
+    const x = document.getElementById('password');
+    if (x.type === 'password') {
+      x.type = 'text';
+    } else {
+      x.type = 'password';
+    }
+  };
+
+  if (email === '' || password === '') {
+    const btn = document.getElementById('submit');
+    btn.innerHTML = 'SIGN IN';
+    btn.disabled = true;
+  }
+
+  const googleFun = () => {
+    window.open(
+      `${process.env.REACT_APP_BACKENDI_URL}/api/auth/google`,
+      '_blank'
+    );
+  };
+
+  const facebookFun = () => {
+    window.open(
+      `${process.env.REACT_APP_BACKENDI_URL}/api/auth/facebook`,
+      '_blank'
+    );
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    api
+      .post(`/api/auth/login`, {
+        email,
+        password,
+      })
+      .then((res) => {
+        const token = res.data.accessToken;
+        const decoded = jwtDecode(token);
+        const user = { user: decoded.user, token };
+        localStorage.setItem('token', token);
+        dispatch(logginUser(user));
+        dispatch(loginMode());
+      })
+      .catch((err) => {
+        const { error } = err.response.data;
+        const displayError = document.getElementsByClassName('displayer');
+        displayError[0].innerText = error;
+      });
+  };
+
+  const { classes, values, touched, errors, isSubmitting, handleBlur } = props;
 
   return (
     <div className={classes.container}>
-      <form onSubmit={handleSubmit} data-testid="regForm">
+      <form onSubmit={handleSubmit} data-testid="loginForm">
         <Card className={classes.card}>
           <Typography
             data-testid="title"
@@ -74,52 +119,18 @@ const form = (props) => {
               marginBottom: `-1em`,
             }}
           >
-            Create account
+            Sign in
           </Typography>
           <CardContent>
             <p className="displayer" />
-            <TextField
-              id="firstName"
-              label="First Name"
-              value={values.firstName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              helperText={touched.firstName ? errors.firstName : ''}
-              error={touched.firstName && Boolean(errors.firstName)}
-              margin="dense"
-              variant="outlined"
-              fullWidth
-            />
-            <TextField
-              id="lastName"
-              label="Last Name"
-              value={values.lastName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              helperText={touched.lastName ? errors.lastName : ''}
-              error={touched.lastName && Boolean(errors.lastName)}
-              margin="dense"
-              variant="outlined"
-              fullWidth
-            />
-            <TextField
-              id="userName"
-              label="User Name"
-              value={values.userName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              helperText={touched.userName ? errors.userName : ''}
-              error={touched.userName && Boolean(errors.userName)}
-              margin="dense"
-              variant="outlined"
-              fullWidth
-            />
+
             <TextField
               id="email"
+              data-testid="email"
               label="Email"
               type="email"
               value={values.email}
-              onChange={handleChange}
+              onChange={getEmail}
               onBlur={handleBlur}
               helperText={touched.email ? errors.email : ''}
               error={touched.email && Boolean(errors.email)}
@@ -130,10 +141,11 @@ const form = (props) => {
 
             <TextField
               id="password"
+              data-testid="password"
               label="Password"
               type="password"
               value={values.password}
-              onChange={handleChange}
+              onChange={getPassword}
               onBlur={handleBlur}
               helperText={touched.password ? errors.password : ''}
               error={touched.password && Boolean(errors.password)}
@@ -149,17 +161,19 @@ const form = (props) => {
           </CardContent>
           <CardActions className={classes.actions}>
             <Button
-              data-testid="submit"
               type="submit"
               variant="contained"
               color="primary"
               disabled={isSubmitting}
+              onClick={handleSubmit}
+              data-testid="submit"
+              id="submit"
               style={{
                 backgroundColor: colors.primaryColor,
                 minWidth: '95%',
               }}
             >
-              Create account
+              Login
             </Button>
           </CardActions>
 
@@ -183,8 +197,16 @@ const form = (props) => {
               },
             }}
           >
-            <Paper elevation={3} sx={{ backgroundImage: `url(${google})` }} />
-            <Paper elevation={3} sx={{ backgroundImage: `url(${facebook})` }} />
+            <Paper
+              elevation={3}
+              sx={{ backgroundImage: `url(${google})` }}
+              onClick={googleFun}
+            />
+            <Paper
+              elevation={3}
+              sx={{ backgroundImage: `url(${facebook})` }}
+              onClick={facebookFun}
+            />
           </Box>
         </Card>
       </form>
@@ -192,32 +214,6 @@ const form = (props) => {
   );
 };
 
-const Form = withFormik({
-  mapPropsToValues: ({ firstName, lastName, userName, email, password }) => ({
-    firstName: firstName || '',
-    lastName: lastName || '',
-    userName: userName || '',
-    email: email || '',
-    password: password || '',
-  }),
-
-  validationSchema: yup.object().shape(validationsForm),
-
-  handleSubmit: (values, { setSubmitting }) => {
-    api
-      .post('/api/auth/register', values)
-      .then((res) => {
-        if (res.statusText === 'OK') {
-          window.location.replace('/unverified');
-        }
-      })
-      .catch((err) => {
-        const { error } = err.response.data;
-        const displayError = document.getElementsByClassName('displayer');
-        displayError[0].innerText = error;
-        setSubmitting(false);
-      });
-  },
-})(form);
+const Form = withFormik({})(form);
 
 export default withStyles(styles)(Form);

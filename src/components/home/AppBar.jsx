@@ -32,7 +32,7 @@ function AppAppBar() {
               color="inherit"
               variant="h6"
               underline="none"
-              href="/"
+              href="/login"
               sx={rightLink}
             >
               <Button
