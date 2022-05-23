@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   performance: { hints: false },
-  entry: path.join(__dirname, 'src', 'Index.jsx'),
+  entry: ['regenerator-runtime/runtime.js', path.join(__dirname, 'src', 'Index.jsx')],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index_bundle.js',
