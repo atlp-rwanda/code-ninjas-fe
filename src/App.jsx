@@ -13,6 +13,7 @@ import './styles/app.scss';
 
 function App() {
   return (
+    <>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="unverified" element={<Unverified />} />
@@ -24,8 +25,9 @@ function App() {
       </Route>
       <Route element={<PrivateRoute />}>
         <Route path="controlpannel" element={<Controlpannel />} />
-      </Route>
+      </Route>       
     </Routes>
+    </>
   );
 }
 

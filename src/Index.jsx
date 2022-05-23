@@ -7,6 +7,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import store from './redux/store';
 
 import App from './App';
+import { ToastContextProvider } from './helpers/ToastNotifications/utils/toastContext';
 
 const persistor = persistStore(store);
 
@@ -14,9 +15,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+    <BrowserRouter>
+    <ToastContextProvider>
+      <App />
+    </ToastContextProvider>
+  </BrowserRouter>
     </PersistGate>
   </Provider>
+  
 );
