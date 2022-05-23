@@ -10,6 +10,8 @@ import Login from './pages/login';
 import Controlpannel from './pages/controlpannel';
 import SocialAuth from './components/login/socialAuth';
 import './styles/app.scss';
+import ForgetPassword from './pages/forgetPassword';
+import ResetPassword from './pages/resetPassword';
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
       <Route element={<PrivateRoute />}>
         <Route path="controlpannel" element={<Controlpannel />} />
       </Route>
+      <Route path="reset-password" element={<ResetPassword />} />
+      <Route path="forgot-password" element={<ForgetPassword />} />
     </Routes>
   );
 }
