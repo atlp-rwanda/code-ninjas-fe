@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const loginSlice = createSlice({
-    name: 'user',
-    initialState: {
-        value: '',
-    },
-    reducers: {
-        logginUser: (state, user) => ({
-            user,
-        }),
-    },
+  name: 'user',
+  initialState: {
+    value: '',
+  },
+  reducers: {
+    logginUser: (state, user) => ({
+      user,
+    }),
+  },
 });
 
 export const { logginUser } = loginSlice.actions;

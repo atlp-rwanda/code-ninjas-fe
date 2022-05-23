@@ -7,11 +7,17 @@ import Welcome from './components/Welcome';
 import PrivateRoute from './app/privateRoute';
 import BounceRoute from './app/bounce';
 import Login from './pages/login';
-import Controlpannel from './pages/controlpannel';
 import SocialAuth from './components/login/socialAuth';
 import './styles/app.scss';
 import ForgetPassword from './pages/forgetPassword';
 import ResetPassword from './pages/resetPassword';
+import DashboardLayout from './layouts';
+import DashboardApp from './pages/DashboardApp';
+import Users from './pages/Users';
+import Accommodations from './pages/Accommodations';
+import Chat from './pages/Chat';
+import Profile from './pages/Profile';
+import TripRequest from './pages/TripRequest';
 
 function App() {
   return (
@@ -25,10 +31,19 @@ function App() {
         <Route path="registration" element={<Registration />} />
       </Route>
       <Route element={<PrivateRoute />}>
-        <Route path="controlpannel" element={<Controlpannel />} />
+        <Route path="dashboard" element={<DashboardLayout />}>
+          <Route path="app" element={<DashboardApp />} />
+          <Route path="users" element={<Users />} />
+          <Route path="accommodations" element={<Accommodations />} />
+          <Route path="chat" element={<Chat />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="trip-request" element={<TripRequest />} />
+        </Route>
       </Route>
       <Route path="reset-password" element={<ResetPassword />} />
       <Route path="forgot-password" element={<ForgetPassword />} />
+      <Route path="registration" element={<Registration />} />
+      <Route path="welcome" element={<Welcome />} />
     </Routes>
   );
 }
