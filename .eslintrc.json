@@ -21,6 +21,8 @@
       }
     ],
     "react/jsx-no-undef": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-wrap-multilines": "off",
     "no-undef": "off"

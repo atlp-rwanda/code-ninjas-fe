@@ -7,20 +7,27 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack serve --mode development --open --hot",
-    "test": "jest --env=jsdom",
+    "test": "jest --env=jsdom react-scripts test -u",
     "build": "webpack --mode production",
     "lint": "eslint src/**/*.jsx --fix",
     "prepare": "husky install"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.8.0",
+    "@mui/styled-engine-sc": "^5.8.0",
+    "prop-types": "^15.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
-    "sass": "^1.51.0"
+    "react-test-renderer": "^18.1.0",
+    "sass": "^1.51.0",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
