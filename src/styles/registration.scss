@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;0,900;1,200&display=swap');
+@import './variable.scss';
+body {
+    background-image: url('../asset/OneOnly-Nyungwe-House-1.jpeg');
+}
+
+.registrationTitle {
+    font-family: $text, sans-serif;
+    color: $primaryColor;
+    font-size: 1.1em;
+    font-weight: 800;
+    padding-left: 30px;
+}
+
+.displayer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    color: rgb(244, 78, 78);
+    background-color: $displer;
+    border-radius: $LowError;
+}
