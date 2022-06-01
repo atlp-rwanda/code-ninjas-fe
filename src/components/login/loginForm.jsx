@@ -83,12 +83,12 @@ const form = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     api
-      .post(`/api/auth/login`, {
+      .post(`http://localhost:3000/api/auth/login`, {
         email,
         password,
       })
       .then((res) => {
-        const token = res.data.accessToken;
+        const token = res.data.body.accessToken;
         const decoded = jwtDecode(token);
         const user = { user: decoded.user, token };
         localStorage.setItem('token', token);

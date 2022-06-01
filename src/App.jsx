@@ -8,6 +8,7 @@ import PrivateRoute from './app/privateRoute';
 import BounceRoute from './app/bounce';
 import Login from './pages/login';
 import Controlpannel from './pages/controlpannel';
+import Request from './pages/request';
 import SocialAuth from './components/login/socialAuth';
 import './styles/app.scss';
 
@@ -24,6 +25,9 @@ function App() {
       </Route>
       <Route element={<PrivateRoute />}>
         <Route path="controlpannel" element={<Controlpannel />} />
+      </Route>
+      <Route element={<PrivateRoute />}>
+        <Route path="request" element={<Request />} />
       </Route>
     </Routes>
   );

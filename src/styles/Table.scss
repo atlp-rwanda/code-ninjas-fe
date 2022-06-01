@@ -1,0 +1,26 @@
+$mainColor: #1565c0;
+.container {
+  margin: 4rem 0 0 2rem;
+}
+
+.MuiDataGrid-columnHeadersInner {
+  background-color: $mainColor;
+}
+
+.MuiDataGrid-columnHeadersInner {
+  color: #f5f5f5;
+  font-weight: bold;
+  text-align: center;
+}
+.MuiDataGrid-columnHeaderTitleContainerContent:first-of-type {
+  padding-left: 1px;
+}
+.MuiDataGrid-columnHeaderTitleContainerContent {
+  padding-left: 10px;
+}
+.MuiToolbar-root {
+  color: $mainColor;
+}
+.MuiDataGrid-selectedRowCount {
+  color: $mainColor;
+}
