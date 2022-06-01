@@ -16,7 +16,7 @@ const persistConfig = {
   version: 1,
   storage,
   blacklist: ['visibility'],
-  whitelist: ['backgroundColor'],
+  whitelist: ['backgroundColor', 'login', 'isLogged'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
