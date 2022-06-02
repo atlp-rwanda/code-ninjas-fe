@@ -4,9 +4,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
+import { useDispatch } from 'react-redux';
+import { getProfileData } from '../../redux/features/profile/profileSlice';
 import '../../styles/Table.scss';
 
 function Table() {
+  const dispatch = useDispatch();
   const [data, setData] = useState([]);
 
   const token = localStorage.getItem('token');
@@ -18,12 +21,9 @@ function Table() {
           authorization: `Bearer ${token}`,
         },
       };
-      const response = await axios.get(
-        'http://localhost:3000/api/trip/request/list',
-        config
-      );
+      const response = await axios.get('api/trip/request/list', config);
       setData(response.data.trips);
-      console.log('This is response ---->>>>>>', response.data.trips);
+      dispatch(getProfileData(response.data.trips));
     };
     renderState();
   }, []);
