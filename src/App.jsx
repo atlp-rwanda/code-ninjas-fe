@@ -10,6 +10,7 @@ import Login from './pages/login';
 import Controlpannel from './pages/controlpannel';
 import SocialAuth from './components/login/socialAuth';
 import './styles/app.scss';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -24,7 +25,9 @@ function App() {
       </Route>
       <Route element={<PrivateRoute />}>
         <Route path="controlpannel" element={<Controlpannel />} />
+        <Route path="profile" element={<Profile />} />
       </Route>
+      <Route path="welcome" element={<Welcome />} />
     </Routes>
   );
 }
