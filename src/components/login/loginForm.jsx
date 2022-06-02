@@ -61,12 +61,6 @@ const form = (props) => {
     }
   };
 
-  if (email === '' || password === '') {
-    const btn = document.getElementById('submit');
-    btn.innerHTML = 'SIGN IN';
-    btn.disabled = true;
-  }
-
   const googleFun = () => {
     window.open(
       `${process.env.REACT_APP_BACKENDI_URL}/api/auth/google`,
@@ -88,7 +82,7 @@ const form = (props) => {
         password,
       })
       .then((res) => {
-        const token = res.data.body.accessToken;
+        const token = res?.data?.accessToken;
         const decoded = jwtDecode(token);
         const user = { user: decoded.user, token };
         localStorage.setItem('token', token);
@@ -96,9 +90,9 @@ const form = (props) => {
         dispatch(loginMode());
       })
       .catch((err) => {
-        const { error } = err.response.data;
+        const { error } = err?.response?.data;
         const displayError = document.getElementsByClassName('displayer');
-        displayError[0].innerText = error;
+        displayError[0].innerText = error || `something went wrong`;
       });
   };
 

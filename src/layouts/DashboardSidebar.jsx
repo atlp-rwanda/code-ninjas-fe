@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/require-default-props */
@@ -21,6 +22,7 @@ import NavSection from '../components/dashboard/NavSection';
 import navConfig from './NavConfig';
 //
 import { thisUser } from '../redux/features/auth/loginSlice';
+import '../styles/roleFix.scss';
 
 // ----------------------------------------------------------------------
 
@@ -60,6 +62,10 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const { user } = jwtDecode(token);
 
   const fullName = `${user.firstName} ${user.lastName}`;
+
+  if (user.roleId !== 4) {
+    require('../styles/hideUser.scss');
+  }
 
   useEffect(() => {
     if (isOpenSidebar) {
@@ -117,7 +123,6 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       </Box>
     </Scrollbar>
   );
-
   return (
     <RootStyle>
       {!isDesktop && (

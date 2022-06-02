@@ -6,6 +6,7 @@ import Chat from '../pages/Chat';
 import Accommodations from '../pages/Accommodations';
 import Profile from '../pages/Profile';
 import Users from '../pages/Users';
+import TripRequest from '../pages/TripRequest';
 
 describe('Dashboard Page Component', () => {
   beforeAll(() => {
@@ -20,25 +21,6 @@ describe('Dashboard Page Component', () => {
 
   it('Should Take Snapshot for Home Component', () => {
     const renderedComponent = renderer.create(<DashboardApp />).toJSON();
-    expect(renderedComponent).toMatchSnapshot();
-  });
-
-  afterAll(cleanup);
-});
-
-describe('Dashboard Users Page Component', () => {
-  beforeAll(() => {
-    render(<Users />);
-  });
-
-  it('should have the right message in the dom', () => {
-    const message = 'Users';
-
-    expect(screen.getByText(message)).toBeInTheDocument();
-  });
-
-  it('Should Take Snapshot for Home Component', () => {
-    const renderedComponent = renderer.create(<Users />).toJSON();
     expect(renderedComponent).toMatchSnapshot();
   });
 

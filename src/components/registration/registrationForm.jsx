@@ -207,7 +207,7 @@ const Form = withFormik({
     api
       .post('/api/auth/register', values)
       .then((res) => {
-        if (res.statusText === 'OK') {
+        if (res.status === 200) {
           window.location.replace('/unverified');
         }
       })

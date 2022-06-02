@@ -9,10 +9,14 @@ export const loginSlice = createSlice({
     logginUser: (state, user) => ({
       user,
     }),
+    loggoutUser: (state) => ({
+      ...state,
+      value: '',
+    }),
   },
 });
 
-export const { logginUser } = loginSlice.actions;
+export const { logginUser, loggoutUser } = loginSlice.actions;
 export const thisUser = (state) => state.login;
 
 export default loginSlice.reducer;
