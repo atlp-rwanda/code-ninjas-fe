@@ -5,7 +5,7 @@ import { thisUser } from '../redux/features/auth/loginSlice';
 
 function BounceRoute() {
   const authenticated = useSelector(thisUser);
-  return authenticated.user ? <Navigate to="/controlpannel" /> : <Outlet />;
+  return authenticated.user ? <Navigate to="/dashboard" /> : <Outlet />;
 }
 
 export default BounceRoute;

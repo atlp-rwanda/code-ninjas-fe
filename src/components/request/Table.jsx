@@ -1,29 +1,16 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
-import { useDispatch } from 'react-redux';
-import { getProfileData } from '../../redux/features/profile/profileSlice';
+import api from '../../utility/api';
 import '../../styles/Table.scss';
 
 function Table() {
-  const dispatch = useDispatch();
   const [data, setData] = useState([]);
-
-  const token = localStorage.getItem('token');
 
   useEffect(() => {
     const renderState = async () => {
-      const config = {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      };
-      const response = await axios.get('api/trip/request/list', config);
-      setData(response.data.trips);
-      dispatch(getProfileData(response.data.trips));
+      api.get('/api/trip/request/list').then((res) => {
+        setData(res.data.trips);
+      });
     };
     renderState();
   }, []);
@@ -65,14 +52,49 @@ function Table() {
     <>
       <div
         className="container"
-        style={{ height: 475, width: '84%', backgroundColor: 'white' }}
+        data-testid="request-table"
+        style={{
+          height: 475,
+          width: '98%',
+          backgroundColor: 'white',
+          margin: ' 4rem 0 0 2rem',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
       >
         <DataGrid
+          data-testid="request-table"
           rows={data}
           columns={columns}
           pageSize={7}
           rowsPerPageOptions={[5]}
           checkboxSelection
+          sx={{
+            height: '100%',
+            width: '100%',
+            '& .MuiDataGrid-columnHeaderTitle': {
+              color: '#f5f5f5',
+            },
+            '& .MuiDataGrid-columnHeadersInner': {
+              backgroundColor: '#1565c0',
+              fontWeight: 'bold',
+              textAlign: 'center',
+            },
+            '& .MuiDataGrid-columnHeaderTitleContainerContent': {
+              paddingLeft: '10px',
+            },
+            '& .MuiToolbar-root': {
+              color: '#1565c0',
+            },
+            '& .MuiDataGrid-selectedRowCount': {
+              color: '#1565c0',
+            },
+            '& .css-d3ri6l-MuiStack-root': {
+              display: 'grid',
+              flexDirection: 'column !important',
+              alignItems: 'start',
+            },
+          }}
         />
       </div>
     </>

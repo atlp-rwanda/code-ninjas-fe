@@ -1,6 +1,7 @@
 import jwtDecode from 'jwt-decode';
 import Paper from '@mui/material/Paper';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -79,11 +80,10 @@ const form = (props) => {
       '_blank'
     );
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     api
-      .post(`http://localhost:3000/api/auth/login`, {
+      .post(`/api/auth/login`, {
         email,
         password,
       })
@@ -154,10 +154,30 @@ const form = (props) => {
               fullWidth
             />
             <FormControlLabel
-              control={<Checkbox sx={{ marginLeft: '0.1em' }} />}
+              control={
+                <Checkbox sx={{ marginLeft: '0.1em', display: 'inline' }} />
+              }
               label="Show password"
               onClick={showPassword}
             />
+            <Typography
+              style={{
+                color: colors.primaryColor,
+                textAlign: 'center',
+                display: 'inline',
+                marginLeft: '5em',
+              }}
+            >
+              <Link
+                to="/forgot-password"
+                style={{
+                  textDecoration: 'none',
+                  color: colors.primaryColor,
+                }}
+              >
+                Forgot password?
+              </Link>
+            </Typography>
           </CardContent>
           <CardActions className={classes.actions}>
             <Button
