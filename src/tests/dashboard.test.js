@@ -5,8 +5,6 @@ import DashboardApp from '../pages/DashboardApp';
 import Chat from '../pages/Chat';
 import Accommodations from '../pages/Accommodations';
 import Profile from '../pages/Profile';
-import Users from '../pages/Users';
-import TripRequest from '../pages/TripRequest';
 
 describe('Dashboard Page Component', () => {
   beforeAll(() => {

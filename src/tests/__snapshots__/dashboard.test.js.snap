@@ -12,6 +12,10 @@ exports[`Dashboard Accommodations Page Component Should Take Snapshot for Home C
     >
       Accommodations
     </h4>
+    <div
+      className="css-noiw7-MuiStack-root"
+      data-testid="AccommodationscardContainer"
+    />
   </div>
 </div>
 `;

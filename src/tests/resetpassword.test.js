@@ -87,3 +87,50 @@ test('it should pop an error if email is invalid)', async () => {
     expect(screen.getByText(/Enter a valid email/i)).toBeInTheDocument();
   });
 });
+
+test('it should render forgot password card', async () => {
+  render(<ForgotForm />);
+  const rowBody = screen.getByTestId('fogCard');
+  await waitFor(() => {
+    expect(rowBody).toBeInTheDocument();
+  });
+});
+
+test('it should render forgot password title', async () => {
+  render(<ForgotForm />);
+  const rowBody = screen.getByTestId('fogTitle');
+  await waitFor(() => {
+    expect(rowBody).toBeInTheDocument();
+  });
+});
+
+test('it should render forgot password display', async () => {
+  render(<ForgotForm />);
+  const rowBody = screen.getByTestId('fogdisplayer');
+  await waitFor(() => {
+    expect(rowBody).toBeInTheDocument();
+  });
+});
+
+test('it should render forgot password text box', async () => {
+  render(<ForgotForm />);
+  const rowBody = screen.getByTestId('fogInputBox');
+  await waitFor(() => {
+    expect(rowBody).toBeInTheDocument();
+  });
+});
+test('it should render forgot password container', async () => {
+  render(<ForgotForm />);
+  const rowBody = screen.getByTestId('fogMainContainer');
+  await waitFor(() => {
+    expect(rowBody).toBeInTheDocument();
+  });
+});
+
+test('it should render forgot password form', async () => {
+  render(<ForgotForm />);
+  const rowBody = screen.getByTestId('regForm');
+  await waitFor(() => {
+    expect(rowBody).toBeInTheDocument();
+  });
+});
