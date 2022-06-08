@@ -18,6 +18,7 @@ import Accommodations from './pages/Accommodations';
 import Chat from './pages/Chat';
 import Profile from './pages/Profile';
 import TripRequest from './pages/TripRequest';
+import VerificationPage from './pages/VerificationPage';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
       <Route path="forgot-password" element={<ForgetPassword />} />
       <Route path="registration" element={<Registration />} />
       <Route path="welcome" element={<Welcome />} />
+      <Route path="api/users/verify/" element={<VerificationPage />} />
     </Routes>
   );
 }
