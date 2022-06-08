@@ -88,7 +88,7 @@ const form = (props) => {
         password,
       })
       .then((res) => {
-        const token = res.data.accessToken;
+        const token = res.data.body.accessToken;
         const decoded = jwtDecode(token);
         const user = { user: decoded.user, token };
         localStorage.setItem('token', token);
