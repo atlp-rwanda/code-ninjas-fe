@@ -22,7 +22,6 @@ import Profile from './pages/Profile';
 import TripRequest from './pages/TripRequest';
 import VerificationPage from './pages/VerificationPage';
 import Product from './components/accommodation/productPage';
-// import Role from './pages/role';
 
 function App() {
   return (
@@ -43,6 +42,7 @@ function App() {
             <Route path="users" element={<Users />} />
           </Route>
           <Route path="accommodations" element={<Accommodations />} />
+          <Route path="app" element={<DashboardApp />} />
           <Route path="chat" element={<Chat />} />
           <Route path="profile" element={<Profile />} />
           <Route path="trip-request" element={<TripRequest />} />
@@ -54,7 +54,6 @@ function App() {
       <Route path="welcome" element={<Welcome />} />
       <Route path="api/users/verify/" element={<VerificationPage />} />
       <Route path="products/:id" element={<Product />} />
-      {/* <Route path="role" element={<Role />} /> */}
     </Routes>
   );
 }
