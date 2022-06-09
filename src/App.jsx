@@ -6,6 +6,7 @@ import Unverified from './pages/unverified';
 import Welcome from './components/Welcome';
 import PrivateRoute from './app/privateRoute';
 import BounceRoute from './app/bounce';
+import SuperAdminRoute from './app/superAdmin';
 import Login from './pages/login';
 import SocialAuth from './components/login/socialAuth';
 import './styles/app.scss';
@@ -34,7 +35,9 @@ function App() {
       <Route element={<PrivateRoute />}>
         <Route path="dashboard" element={<DashboardLayout />}>
           <Route path="app" element={<DashboardApp />} />
-          <Route path="users" element={<Users />} />
+          <Route element={<SuperAdminRoute />}>
+            <Route path="users" element={<Users />} />
+          </Route>
           <Route path="accommodations" element={<Accommodations />} />
           <Route path="chat" element={<Chat />} />
           <Route path="profile" element={<Profile />} />

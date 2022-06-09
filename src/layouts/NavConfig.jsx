@@ -15,6 +15,8 @@ const navConfig = [
     title: 'Users',
     path: '/dashboard/users',
     icon: getIcon('eva:people-fill'),
+    class: 'nav-item-users',
+    id: 'nav-item-users',
   },
   {
     title: 'Accommodations',
@@ -35,11 +37,6 @@ const navConfig = [
     title: 'Trip Request',
     path: '/dashboard/trip-request',
     icon: getIcon('eva:person-add-fill'),
-  },
-  {
-    title: 'Logout',
-    path: '/welcome',
-    icon: getIcon('eva:alert-triangle-fill'),
   },
 ];
 

@@ -19,6 +19,7 @@ import MenuPopover from '../components/dashboard/MenuPopover';
 // mocks_
 import account from '../../_mock/account';
 import { thisUser } from '../redux/features/auth/loginSlice';
+import api from '../utility/api';
 
 // ----------------------------------------------------------------------
 
@@ -40,7 +41,7 @@ const MENU_OPTIONS = [
   },
 ];
 
-// ----------------------------------------------------------------------
+// ------------------------------------------------------------------------
 
 export default function AccountPopover() {
   const anchorRef = useRef(null);
@@ -55,6 +56,24 @@ export default function AccountPopover() {
 
   const handleClose = () => {
     setOpen(null);
+  };
+
+  const logout = () => {
+    api
+      .get('/api/auth/logout')
+      .then(() => {
+        localStorage.removeItem('persist:root');
+        localStorage.removeItem('token');
+        window.location.reload();
+      })
+      .catch(() => {
+        localStorage.removeItem('persist:root');
+        localStorage.removeItem('token');
+        window.location.reload();
+      });
+    localStorage.removeItem('persist:root');
+    localStorage.removeItem('token');
+    window.location.reload();
   };
 
   const { token } = authenticated.user.payload;
@@ -126,7 +145,7 @@ export default function AccountPopover() {
 
         <Divider sx={{ borderStyle: 'dashed' }} />
 
-        <MenuItem onClick={handleClose} sx={{ m: 1 }}>
+        <MenuItem onClick={logout} sx={{ m: 1 }}>
           Logout
         </MenuItem>
       </MenuPopover>
