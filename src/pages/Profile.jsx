@@ -1,24 +1,12 @@
 import React from 'react';
-// material
-import { Container, Stack, Typography } from '@mui/material';
-// components
-import Page from '../components/dashboard/Page';
+import ProfilePage from '../components/profile/Profile';
 
-export default function Blog() {
+function Profile() {
   return (
-    <Page title="Dashboard: Blog">
-      <Container>
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
-          mb={5}
-        >
-          <Typography variant="h4" gutterBottom>
-            Profile
-          </Typography>
-        </Stack>
-      </Container>
-    </Page>
+    <>
+      <ProfilePage />
+    </>
   );
 }
+
+export default Profile;
