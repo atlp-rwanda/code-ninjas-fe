@@ -10,7 +10,8 @@
     "test": "jest --env=jsdom react-scripts test -u",
     "build": "webpack --mode production",
     "lint": "eslint src/**/*.jsx --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "coverage": "yarn run test && jest --collect-coverage"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
