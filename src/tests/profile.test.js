@@ -28,7 +28,7 @@ const profile = {
   lineManager: 'Jane Doe',
   preferredLanguage: 'English',
   preferredCurrency: 'USD',
-  dob: '01/01/2000',
+  dob: '01-01-2000',
 };
 
 describe('Profile Page component', () => {
@@ -65,6 +65,69 @@ describe('Profile Page component', () => {
     user.type(lastName, profile.lastName);
 
     expect(lastName).toBeInTheDocument();
+  });
+  test('Profile should have this text', () => {
+    render(<Profile />);
+    const email = screen.getByTestId('email');
+    user.type(email, profile.email);
+
+    expect(email).toBeInTheDocument();
+  });
+  test('Profile should have this text', () => {
+    render(<Profile />);
+    const gender = screen.getByTestId('gender');
+    user.type(gender, profile.gender);
+
+    expect(gender).toBeInTheDocument();
+  });
+  test('Profile should have this text', () => {
+    render(<Profile />);
+    const department = screen.getByTestId('department');
+    user.type(department, profile.department);
+
+    expect(department).toBeInTheDocument();
+  });
+  test('Profile should have this text', () => {
+    render(<Profile />);
+    const phoneNumber = screen.getByTestId('phoneNumber');
+    user.type(phoneNumber, profile.phoneNumber);
+
+    expect(phoneNumber).toBeInTheDocument();
+  });
+  test('Profile should have this text', () => {
+    render(<Profile />);
+    const address = screen.getByTestId('address');
+    user.type(address, profile.address);
+
+    expect(address).toBeInTheDocument();
+  });
+  test('Profile should have this text', () => {
+    render(<Profile />);
+    const lineManager = screen.getByTestId('lineManager');
+    user.type(lineManager, profile.lineManager);
+
+    expect(lineManager).toBeInTheDocument();
+  });
+  test('Profile should have this text', () => {
+    render(<Profile />);
+    const preferredLanguage = screen.getByTestId('preferredLanguage');
+    user.type(preferredLanguage, profile.preferredLanguage);
+
+    expect(preferredLanguage).toBeInTheDocument();
+  });
+  test('Profile should have this text', () => {
+    render(<Profile />);
+    const preferredCurrency = screen.getByTestId('preferredCurrency');
+    user.type(preferredCurrency, profile.preferredCurrency);
+
+    expect(preferredCurrency).toBeInTheDocument();
+  });
+  test('Profile should have this text', () => {
+    render(<Profile />);
+    const dob = screen.getByTestId('dob');
+    user.type(dob, profile.dob);
+
+    expect(dob).toBeInTheDocument();
   });
 
   afterEach(cleanup);
