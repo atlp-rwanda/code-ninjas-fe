@@ -16,10 +16,13 @@ import DashboardLayout from './layouts';
 import DashboardApp from './pages/DashboardApp';
 import Users from './pages/Users';
 import Accommodations from './pages/Accommodations';
+import Accomodation from './pages/accommodation';
 import Chat from './pages/Chat';
 import Profile from './pages/Profile';
 import TripRequest from './pages/TripRequest';
 import VerificationPage from './pages/VerificationPage';
+import Product from './components/accommodation/productPage';
+// import Role from './pages/role';
 
 function App() {
   return (
@@ -35,6 +38,7 @@ function App() {
       <Route element={<PrivateRoute />}>
         <Route path="dashboard" element={<DashboardLayout />}>
           <Route path="app" element={<DashboardApp />} />
+          <Route path="accomodation/:id" element={<Accomodation />} />
           <Route element={<SuperAdminRoute />}>
             <Route path="users" element={<Users />} />
           </Route>
@@ -49,6 +53,8 @@ function App() {
       <Route path="registration" element={<Registration />} />
       <Route path="welcome" element={<Welcome />} />
       <Route path="api/users/verify/" element={<VerificationPage />} />
+      <Route path="products/:id" element={<Product />} />
+      {/* <Route path="role" element={<Role />} /> */}
     </Routes>
   );
 }

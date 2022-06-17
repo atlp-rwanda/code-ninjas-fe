@@ -45,10 +45,11 @@ const form = (props) => {
   } = props;
 
   return (
-    <div className={classes.container}>
+    <div className={classes.container} data-testid="fogMainContainer">
       <form onSubmit={handleSubmit} data-testid="regForm">
-        <Card className={classes.card}>
+        <Card className={classes.card} data-testid="fogCard">
           <Typography
+            data-testid="fogTitle"
             align="center"
             variant="h5"
             style={{
@@ -61,7 +62,11 @@ const form = (props) => {
             Forgot password
           </Typography>
           <CardContent>
-            <p className="displayer" id="displayer" />
+            <p
+              className="displayer"
+              id="displayer"
+              data-testid="fogdisplayer"
+            />
 
             <TextField
               id="email"
@@ -75,9 +80,10 @@ const form = (props) => {
               margin="dense"
               variant="outlined"
               fullWidth
+              data-testid="fogInputBox"
             />
           </CardContent>
-          <CardActions className={classes.actions}>
+          <CardActions className={classes.actions} data-testid="fogAction">
             <Button
               type="submit"
               data-testid="submit"
