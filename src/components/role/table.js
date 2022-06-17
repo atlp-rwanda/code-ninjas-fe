@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import MaterialTable from '@material-table/core';
 import { TablePagination } from '@material-ui/core';
