@@ -15,8 +15,8 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  blacklist: [],
-  whitelist: ['login', 'isLogged', 'getProfile'],
+  blacklist: ['visibility'],
+  whitelist: ['backgroundColor', 'login', 'isLogged', 'getProfile', 'getTrips'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
