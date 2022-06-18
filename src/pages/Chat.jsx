@@ -1,8 +1,9 @@
 import React from 'react';
 // material
-import { Container, Stack, Typography } from '@mui/material';
+import { Container, Stack } from '@mui/material';
 // components
 import Page from '../components/dashboard/Page';
+import Chat from '../components/chat/Chat';
 
 export default function Blog() {
   return (
@@ -14,9 +15,7 @@ export default function Blog() {
           justifyContent="space-between"
           mb={5}
         >
-          <Typography variant="h4" gutterBottom>
-            Chat
-          </Typography>
+          <Chat />
         </Stack>
       </Container>
     </Page>
